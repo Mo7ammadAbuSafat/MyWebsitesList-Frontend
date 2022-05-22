@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>websites</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="master.css">
+    <script>
+        function set() {
+
+            let n = document.getElementById("name").value;
+            let x = document.getElementById("link").value;
+            if (n == "" || x == ""){
+                alert("fill textbox");
+            }
+            else {
+                let z = document.getElementById('table').innerHTML;
+                z += `<tr>
+                <td class="tdd"></td>
+                <td><a href="${x}">${n}</a></td>
+                <td>${x}</td>
+                <td><button onclick="del()">delete</button></td>
+            </tr>`;
+                document.getElementById('table').innerHTML = z;
+                document.getElementById("name").value = "";
+                document.getElementById("link").value = "";
+            }
+        }
+
+        function del() {
+            let btn = window.event.target;
+            btn.parentElement.parentElement.remove();
+            document.getElementById('table').innerHTML=document.getElementById('table').innerHTML;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="co">
+            <p>Website Name</p>
+            <input type="text" name="name" id="name" required>
+            <p>Website Url</p>
+            <input type="url" name="link" id="link" required>
+            <button id="button" onclick="set()">add</button>
+        </div>
+
+        <table id="table">
+            <tr>
+                <th>#</th>
+                <th>Website Name</th>
+                <th>Website Url</th>
+                <th>Action</th>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
